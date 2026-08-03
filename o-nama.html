@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600;700;800&family=Space+Grotesk:wght@400;500;600;700&amp;family=Manrope:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet">
+<style>
+  :root{
+    --navy:#0b1622;--navy-2:#13233a;--blue:#1f8fe6;--blue-soft:#e6f2fc;
+    --red:#1f8fe6;--red-soft:#e6f2fc;--ink:#141b26;--muted:#5c6675;
+    --bg:#f5f7fb;--card:#ffffff;--line:#e4e9f1;--accent:#1f8fe6;
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{margin:0;background:var(--bg);color:var(--ink);font-family:'Manrope',system-ui,sans-serif;-webkit-font-smoothing:antialiased;}
+  h1,h2,h3,h4{font-family:'Poppins',system-ui,sans-serif;margin:0;letter-spacing:-0.02em;}
+  a{color:var(--blue);text-decoration:none;}
+  a:hover{color:var(--red);}
+  img{display:block;max-width:100%;}
+</style>
+<script src="image-slot.js"></script>
+</helmet>
+<div style="min-height:100vh;display:flex;flex-direction:column">
+
+  <header style="position:sticky;top:0;z-index:60;background:rgba(255,255,255,0.9);backdrop-filter:blur(14px);border-bottom:1px solid var(--line)">
+    <div style="max-width:1100px;margin:0 auto;padding:12px 24px;display:flex;align-items:center;justify-content:space-between;gap:20px;flex-wrap:wrap">
+      <a href="index.html" style="display:flex;align-items:center;gap:10px">
+        <img src="uploads/logo-renipro.png" alt="Auto škola Reni Pro" style="height:44px;width:auto">
+      </a>
+      
+    </div>
+  </header>
+
+  <section style="position:relative;background:var(--navy);color:#fff;overflow:hidden">
+    <div style="position:absolute;top:-120px;right:-80px;width:420px;height:420px;border-radius:50%;background:radial-gradient(circle,rgba(31,102,224,0.4),transparent 70%);filter:blur(20px)"></div>
+    <div style="position:absolute;bottom:-140px;left:-60px;width:360px;height:360px;border-radius:50%;background:radial-gradient(circle,rgba(31,143,230,0.35),transparent 70%);filter:blur(20px)"></div>
+    <div style="position:relative;max-width:1100px;margin:0 auto;padding:80px 24px">
+      <div style="display:inline-flex;align-items:center;gap:8px;background:rgba(255,255,255,0.12);border:1px solid rgba(255,255,255,0.2);padding:7px 15px;border-radius:999px;font-size:13px;font-weight:600;margin-bottom:22px">
+        <span style="width:8px;height:8px;border-radius:50%;background:var(--red)"></span>O nama
+      </div>
+      <h1 style="font-size:clamp(32px,5vw,54px);line-height:1.06;max-width:820px">Vaš uspeh je naša najbolja preporuka.</h1>
+    </div>
+  </section>
+
+  <section style="max-width:1100px;margin:0 auto;padding:70px 24px 40px;width:100%">
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:48px;align-items:center">
+      <div>
+        <p style="color:var(--muted);font-size:17px;line-height:1.75;margin:0">Od 2018. godine, Auto škola Reni Pro postavlja standarde u obuci vozača u Kruševcu i Varvarinu. Naša reputacija nije izgrađena na marketingu, već na poverenju — preko 80% naših kandidata dolazi po preporuci prijatelja i porodice koje smo uspešno pripremili za samostalnu vožnju.</p>
+      </div>
+      <div style="position:relative">
+        <div style="aspect-ratio:4/3;border-radius:22px;overflow:hidden;border:1px solid var(--line)">
+          <img src="uploads/pasted-1785484004114-0.png" alt="Tim auto škole Reni Pro" style="width:100%;height:100%;object-fit:cover;display:block">
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section style="max-width:1100px;margin:0 auto;padding:20px 24px 80px;width:100%;flex:1">
+    <h2 style="font-size:clamp(26px,3.5vw,38px);color:var(--navy);text-align:center;margin-bottom:40px">Zašto baš mi</h2>
+    <div class="about-cards" style="display:grid;grid-template-columns:1fr;gap:18px;max-width:720px;margin:0 auto">
+      <div style="background:var(--card);border:1px solid var(--line);border-radius:20px;padding:26px 22px;box-shadow:0 22px 46px -34px rgba(14,33,64,0.3)">
+        <div style="width:52px;height:52px;border-radius:14px;background:var(--red-soft);color:var(--accent);display:flex;align-items:center;justify-content:center;margin-bottom:18px"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s-7-4.35-7-10a4 4 0 0 1 7-2.65A4 4 0 0 1 19 11c0 5.65-7 10-7 10z"></path></svg></div>
+        <h3 style="font-size:20px;color:var(--navy);margin-bottom:10px">Pristup fokusiran na vas</h3>
+        <p style="color:var(--muted);font-size:15px;line-height:1.7">Verujemo da je individualni pristup ključ uspeha. Naši instruktori nisu samo eksperti za saobraćaj, već i licencirani profesionalci koji odlično razumeju psihologiju kandidata. Pomažemo vam da prevaziđete strahove i blokade, pretvarajući izazove u sigurnost na putu.</p>
+      </div>
+      <div style="background:var(--card);border:1px solid var(--line);border-radius:20px;padding:26px 22px;box-shadow:0 22px 46px -34px rgba(14,33,64,0.3)">
+        <div style="width:52px;height:52px;border-radius:14px;background:var(--red-soft);color:var(--accent);display:flex;align-items:center;justify-content:center;margin-bottom:18px"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 12l2 2 4-4"></path><path d="M12 3l7 3v5c0 4.5-3 8-7 10-4-2-7-5.5-7-10V6z"></path></svg></div>
+        <h3 style="font-size:20px;color:var(--navy);margin-bottom:10px">Stručnost i iskustvo</h3>
+        <p style="color:var(--muted);font-size:15px;line-height:1.7">Naš tim broji 10 licenciranih profesionalaca koji se kontinuirano usavršavaju. Kroz 8 različitih kategorija (AM, A1, A2, A, B, BE, C, CE) prenosimo znanje na način koji je vama razumljiv i primenljiv.</p>
+      </div>
+      <div style="background:var(--card);border:1px solid var(--line);border-radius:20px;padding:26px 22px;box-shadow:0 22px 46px -34px rgba(14,33,64,0.3)">
+        <div style="width:52px;height:52px;border-radius:14px;background:var(--red-soft);color:var(--accent);display:flex;align-items:center;justify-content:center;margin-bottom:18px"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 17h14l1-6-4 1-4-6-4 6-4-1z"></path><circle cx="7.5" cy="18.5" r="1.5"></circle><circle cx="16.5" cy="18.5" r="1.5"></circle></svg></div>
+        <h3 style="font-size:20px;color:var(--navy);margin-bottom:10px">Komfor i vrhunska oprema</h3>
+        <p style="color:var(--muted);font-size:15px;line-height:1.7">Na raspolaganju vam je moderan vozni park od 13 vozila, što nam omogućava maksimalnu fleksibilnost pri izboru instruktora i termina koji se uklapaju u vaš raspored.</p>
+      </div>
+      <div style="background:var(--card);border:1px solid var(--line);border-radius:20px;padding:26px 22px;box-shadow:0 22px 46px -34px rgba(14,33,64,0.3)">
+        <div style="width:52px;height:52px;border-radius:14px;background:var(--red-soft);color:var(--accent);display:flex;align-items:center;justify-content:center;margin-bottom:18px"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><path d="M14 2v6h6"></path><path d="M9 15l2 2 4-4"></path></svg></div>
+        <h3 style="font-size:20px;color:var(--navy);margin-bottom:10px">Transparentnost od prvog dana</h3>
+        <p style="color:var(--muted);font-size:15px;line-height:1.7">Naš cilj je da se osećate sigurno i informisano. Prilikom upisa detaljno vas vodimo kroz kompletnu proceduru — od potrebne dokumentacije do saveta za polaganje ispita — kako bi vaš put do dozvole bio bez stresa.</p>
+      </div>
+    </div>
+
+    <div style="background:linear-gradient(120deg,var(--accent),#125a97);border-radius:24px;padding:clamp(36px,5vw,56px);text-align:center;color:#fff;margin-top:48px">
+      <h2 style="font-size:clamp(24px,3.5vw,36px);line-height:1.1">Vaša sigurnost je naš prioritet.</h2>
+      <p style="font-size:17px;opacity:0.92;max-width:640px;margin:18px auto 30px;line-height:1.6">Pozivamo vas da nas posetite u Kruševcu ili Varvarinu, postanete deo naše uspešne zajednice i uverite se zašto smo izbor broj jedan generacijama vozača.</p>
+      <div style="display:flex;gap:14px;justify-content:center;flex-wrap:wrap">
+        <a href="tel:0641541509" style="background:#fff;color:var(--navy);padding:14px 30px;border-radius:999px;font-weight:800;font-size:16px" style-hover="transform:translateY(-3px)">☎ 064/1541509</a>
+        <a href="index.html#prijava" style="background:rgba(255,255,255,0.12);border:1px solid rgba(255,255,255,0.4);color:#fff;padding:14px 30px;border-radius:999px;font-weight:700;font-size:16px" style-hover="background:rgba(255,255,255,0.22)">Prijavi se</a>
+      </div>
+    </div>
+
+    <div style="text-align:center;margin-top:36px">
+      <a href="index.html" style="display:inline-flex;align-items:center;gap:8px;border:1px solid var(--line);color:var(--ink);padding:14px 30px;border-radius:999px;font-weight:700;font-size:16px;background-color:#FFFFFF" style-hover="border-color:var(--accent);color:var(--accent)">← Nazad na početnu</a>
+    </div>
+  </section>
+
+  <footer style="background:var(--navy);border-top:1px solid rgba(255,255,255,0.08);padding:36px 24px">
+    <div style="max-width:1100px;margin:0 auto;display:flex;flex-wrap:wrap;gap:20px;align-items:center;justify-content:space-between">
+      <img src="uploads/logo-renipro.png" alt="Auto škola Reni Pro" style="height:44px;background:#fff;padding:6px 10px;border-radius:10px">
+      <div style="color:rgba(255,255,255,0.6);font-size:14px">© 2026 Auto škola Reni Pro · Vršac</div>
+    </div>
+  </footer>
+
+</div>
+</x-dc>
+</body>
+</html>

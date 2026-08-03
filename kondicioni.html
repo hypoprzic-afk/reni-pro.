@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600;700;800&family=Space+Grotesk:wght@400;500;600;700&amp;family=Manrope:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet">
+<style>
+  :root{
+    --navy:#0b1622;--navy-2:#13233a;--blue:#1f8fe6;--blue-soft:#e6f2fc;
+    --red:#1f8fe6;--red-soft:#e6f2fc;--ink:#141b26;--muted:#5c6675;
+    --bg:#f5f7fb;--card:#ffffff;--line:#e4e9f1;--accent:var(--blue);
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{margin:0;background:var(--bg);color:var(--ink);font-family:'Manrope',system-ui,sans-serif;-webkit-font-smoothing:antialiased;}
+  h1,h2,h3,h4{font-family:'Poppins',system-ui,sans-serif;margin:0;letter-spacing:-0.02em;}
+  a{color:var(--blue);text-decoration:none;}
+  a:hover{color:var(--red);}
+  img{display:block;max-width:100%;}
+</style>
+</helmet>
+<div style="min-height:100vh;display:flex;flex-direction:column">
+
+  <header style="position:sticky;top:0;z-index:60;background:rgba(255,255,255,0.9);backdrop-filter:blur(14px);border-bottom:1px solid var(--line)">
+    <div style="max-width:1100px;margin:0 auto;padding:12px 24px;display:flex;align-items:center;justify-content:space-between;gap:20px;flex-wrap:wrap">
+      <a href="index.html" style="display:flex;align-items:center;gap:10px">
+        <img src="uploads/logo-renipro.png" alt="Auto škola Reni Pro" style="height:44px;width:auto">
+      </a>
+    </div>
+  </header>
+
+  <section style="position:relative;background:var(--navy);color:#fff;overflow:hidden">
+    <img src="uploads/pasted-1784366730436-0.png" alt="Kondicioni časovi" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0.28">
+    <div style="position:absolute;inset:0;background:linear-gradient(105deg,rgba(10,20,40,0.9),rgba(10,20,40,0.55))"></div>
+    <div style="position:relative;max-width:1100px;margin:0 auto;padding:90px 24px">
+      <div style="display:inline-flex;align-items:center;gap:8px;background:rgba(255,255,255,0.12);border:1px solid rgba(255,255,255,0.2);padding:7px 15px;border-radius:999px;font-size:13px;font-weight:600;margin-bottom:22px">
+        <span style="width:8px;height:8px;border-radius:50%;background:var(--red)"></span>Kondicioni časovi
+      </div>
+      <h1 style="font-size:clamp(32px,5vw,54px);line-height:1.06;max-width:760px">Nauči da voziš bezbedno na svom vozilu!</h1>
+    </div>
+  </section>
+
+  <section style="max-width:820px;margin:0 auto;padding:70px 24px;flex:1">
+    <p style="color:var(--muted);font-size:17px;line-height:1.75;margin:0 0 18px">Dosta je vozača koji poseduju vozačku dozvolu, a nisu aktivni vozači iz nekog razloga. Često je strah od saobraćaja prepreka tome, kao i nedostatak samopouzdanja.</p>
+    <p style="color:var(--muted);font-size:17px;line-height:1.75;margin:0 0 18px">Imate auto, imate vozačku dozvolu, a još uvek čekate na drugog da vas vozi ili trošite mnogo novca na taksi? Rešite se tog problema i vratite se u formu aktivnih vozača.</p>
+    <p style="color:var(--muted);font-size:17px;line-height:1.75;margin:0 0 18px">Dodatni časovi vožnje namenjeni su vozačima koji poseduju vozačku dozvolu, a koji iz nekog razloga dugo nisu vozili. Oni služe da se oslobodite straha, podignete samopouzdanje, naučite da upravljate vozilom u realnim uslovima uz poštovanje svih pravila i propisa, da naučite da parkirate vaše vozilo — i sve što vam je potrebno da budete bezbedan vozač.</p>
+    <p style="color:var(--navy);font-size:18px;font-weight:600;line-height:1.6;margin:0 0 26px">Obnovite vozačke veštine na dodatnim časovima vožnje.</p>
+
+    <div style="background:var(--red-soft);border-left:4px solid var(--accent);border-radius:0 16px 16px 0;padding:24px 28px;margin:0 0 30px">
+      <h3 style="font-size:20px;color:var(--navy);margin-bottom:8px">Ne smete da vozite?</h3>
+      <p style="color:var(--muted);font-size:16px;line-height:1.7;margin:0">Mi smo tu da rešimo vaš problem i da vašu vožnju učinimo sigurnom i bezbednom. U dogovoru sa vama, naši instruktori će vam zakazati termine za dodatne časove u vreme koje vama odgovara.</p>
+    </div>
+
+    <p style="color:var(--navy);font-size:18px;font-weight:600;line-height:1.6;margin:0 0 40px">Vožnja nije teška, vožnja nije strašna — potrebno je samo strpljenje i časovi vožnje.</p>
+
+    <h2 style="font-size:26px;color:var(--navy);margin:0 0 12px">Koliko dodatnih časova vam je potrebno?</h2>
+    <p style="color:var(--muted);font-size:17px;line-height:1.75;margin:0 0 12px">Broj časova zavisi od mnogo faktora i individualan je od osobe do osobe.</p>
+    <p style="color:var(--muted);font-size:17px;line-height:1.75;margin:0 0 40px">Naši instruktori će tokom vaše vožnje proceniti kada ste spremni za bezbedno učestvovanje u saobraćaju.</p>
+
+    <div style="background:linear-gradient(120deg,var(--accent),#125a97);border-radius:20px;padding:36px;color:#fff;text-align:center;margin:0 0 40px">
+      <div style="font-size:14px;letter-spacing:0.06em;text-transform:uppercase;color:rgba(255,255,255,0.82);margin-bottom:10px">Zakažite prvi čas vožnje pozivom na telefon</div>
+      <a href="tel:0641541509" style="font-family:'Poppins';font-size:clamp(28px,5vw,40px);font-weight:700;color:#fff;display:inline-flex;align-items:center;gap:12px" style-hover="color:#fff"><svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>064/1541509</a>
+    </div>
+
+    <p style="color:var(--muted);font-size:17px;line-height:1.75;margin:0 0 6px">Učinićemo sve da vaše vozačke sposobnosti ne budu dobre, već odlične!</p>
+    <p style="color:var(--muted);font-size:17px;line-height:1.75;margin:0 0 36px">Uživajte u vožnji — dođite kod nas.</p>
+
+    <h3 style="font-size:20px;color:var(--navy);margin:0 0 16px">Prilikom započinjanja obuke u auto-školi „Dule" neophodne su:</h3>
+    <ul style="list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:12px">
+      <li style="display:flex;gap:14px;align-items:center;background:var(--card);border:1px solid var(--line);border-radius:14px;padding:16px 20px;font-size:16.5px;color:var(--ink);font-weight:500"><span style="width:32px;height:32px;flex-shrink:0;border-radius:9px;background:var(--red-soft);color:var(--accent);display:flex;align-items:center;justify-content:center;font-weight:700">1</span>Lična karta</li>
+      <li style="display:flex;gap:14px;align-items:center;background:var(--card);border:1px solid var(--line);border-radius:14px;padding:16px 20px;font-size:16.5px;color:var(--ink);font-weight:500"><span style="width:32px;height:32px;flex-shrink:0;border-radius:9px;background:var(--red-soft);color:var(--accent);display:flex;align-items:center;justify-content:center;font-weight:700">2</span>Vozačka dozvola</li>
+    </ul>
+
+    <div style="margin-top:44px;display:flex;gap:14px;flex-wrap:wrap;justify-content:center">
+      
+      <a href="index.html" style="border: 1px solid var(--line); color: var(--ink); padding: 15px 30px; border-radius: 999px; font-weight: 700; font-size: 16px; text-align: left; background-color: #FFFFFF" style-hover="border-color:var(--accent);color:var(--accent)">← Nazad na početnu</a>
+    </div>
+  </section>
+
+  <footer style="background:var(--navy);border-top:1px solid rgba(255,255,255,0.08);padding:36px 24px">
+    <div style="max-width:1100px;margin:0 auto;display:flex;flex-wrap:wrap;gap:20px;align-items:center;justify-content:space-between">
+      <img src="uploads/logo-renipro.png" alt="Auto škola Reni Pro" style="height:44px;background:#fff;padding:6px 10px;border-radius:10px">
+      <div style="color:rgba(255,255,255,0.6);font-size:14px">© 2026 Auto škola Reni Pro · Kruševac &amp; Varvarin</div>
+    </div>
+  </footer>
+
+</div>
+</x-dc>
+</body>
+</html>
