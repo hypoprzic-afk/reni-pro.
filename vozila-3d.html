@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="sr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Naša vozila — 3D</title>
+<style>
+  *{box-sizing:border-box;}
+  html,body{margin:0;height:100%;background:transparent;font-family:'Manrope',system-ui,sans-serif;overflow:hidden;}
+  #wrap{position:relative;width:100%;height:100%;display:flex;align-items:center;justify-content:center;}
+  #stage{width:100%;height:100%;touch-action:pan-y;cursor:grab;}
+  #stage:active{cursor:grabbing;}
+  .arrow{position:absolute;top:50%;transform:translateY(-50%);z-index:3;width:56px;height:56px;border-radius:50%;background:#fff;border:1px solid #e4e9f1;color:#0e2140;display:flex;align-items:center;justify-content:center;cursor:pointer;box-shadow:0 14px 30px -16px rgba(14,33,64,0.5);transition:transform .2s ease,color .2s ease,border-color .2s ease;}
+  .arrow:hover{border-color:#e01b2c;color:#e01b2c;transform:translateY(-50%) scale(1.06);}
+  #prev{left:8px;} #next{right:8px;}
+  #info{position:absolute;left:0;right:0;bottom:6px;text-align:center;pointer-events:none;}
+  #vname{font-family:'Space Grotesk',system-ui,sans-serif;font-size:24px;font-weight:700;color:#0e2140;margin:0;}
+  #vdesc{color:#5c6675;font-size:15px;margin:6px 0 0;}
+  #dots{display:flex;gap:9px;justify-content:center;margin-top:14px;pointer-events:auto;}
+  #dots button{width:10px;height:10px;border-radius:50%;border:none;cursor:pointer;padding:0;transition:background .2s ease;background:#cfd6e2;}
+</style>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@700&family=Manrope:wght@400;600&display=swap" rel="stylesheet">
+<script type="importmap">
+{
+  "imports": {
+    "three": "https://unpkg.com/three@0.184.0/build/three.module.js",
+    "three/addons/controls/OrbitControls.js": "https://unpkg.com/three@0.184.0/examples/jsm/controls/OrbitControls.js"
+  },
+  "integrity": {
+    "https://unpkg.com/three@0.184.0/build/three.module.js": "sha384-8FCZ1eVO6it4+pbec2aDtnTrwjWXZLJRC+MAGCIPDgsYnUrl/E0A2YlF8ioMKI/J",
+    "https://unpkg.com/three@0.184.0/build/three.core.js": "sha384-dw2ooPewaEIrAgl6oFDBmmBWCE9oW9LxRGcfwZ0hLvEprzo202wXl7vCYHRlSnOT",
+    "https://unpkg.com/three@0.184.0/examples/jsm/controls/OrbitControls.js": "sha384-4rziNxOBZKQ69i+w+f89KJ55TCYquwchVbByQwmaOeIOXdOU2PLDn3kOfXHwIJC9"
+  }
+}
+</script>
+</head>
+<body>
+<div id="wrap">
+  <button id="prev" class="arrow" aria-label="Prethodno vozilo"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"></path></svg></button>
+  <div id="stage"></div>
+  <button id="next" class="arrow" aria-label="Sledeće vozilo"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6l6 6-6 6"></path></svg></button>
+  <div id="info">
+    <h3 id="vname">VW Polo</h3>
+    <p id="vdesc">Putnički automobil za obuku B kategorije.</p>
+    <div id="dots"></div>
+  </div>
+</div>
+
+<script type="module">
+import * as THREE from 'three';
+import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
+
+const vehicles = [
+  { name: 'VW Polo',       desc: 'Putnički automobil za obuku B kategorije.', color: '#f4f4f6' },
+  { name: 'Golf — crveni', desc: 'Dodatno vozilo za obuku B kategorije.',     color: '#d21f2c' },
+  { name: 'Plavi hečbek',  desc: 'Rezervno školsko vozilo B kategorije.',      color: '#1f66e0' },
+];
+
+const mount = document.getElementById('stage');
+const W = () => mount.clientWidth, H = () => mount.clientHeight || 440;
+
+const scene = new THREE.Scene();
+const camera = new THREE.PerspectiveCamera(38, W() / H(), 0.1, 100);
+camera.position.set(5.4, 3.0, 6.2);
+const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
+renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+renderer.setSize(W(), H());
+renderer.shadowMap.enabled = true;
+renderer.shadowMap.type = THREE.PCFSoftShadowMap;
+mount.appendChild(renderer.domElement);
+
+scene.add(new THREE.HemisphereLight(0xffffff, 0x8090a0, 0.9));
+const key = new THREE.DirectionalLight(0xffffff, 1.5);
+key.position.set(6, 10, 7); key.castShadow = true;
+key.shadow.mapSize.set(1024, 1024);
+key.shadow.camera.left = -8; key.shadow.camera.right = 8; key.shadow.camera.top = 8; key.shadow.camera.bottom = -8;
+scene.add(key);
+const fill = new THREE.DirectionalLight(0xffffff, 0.5); fill.position.set(-6, 4, -5); scene.add(fill);
+
+const ground = new THREE.Mesh(new THREE.PlaneGeometry(40, 40), new THREE.ShadowMaterial({ opacity: 0.16 }));
+ground.rotation.x = -Math.PI / 2; ground.position.y = -0.02; ground.receiveShadow = true; scene.add(ground);
+
+const carGroup = new THREE.Group(); scene.add(carGroup);
+
+function rc(w, h, d, r, mat) {
+  const s = new THREE.Shape();
+  const x = -w/2, y = -h/2;
+  s.moveTo(x+r, y); s.lineTo(x+w-r, y); s.quadraticCurveTo(x+w, y, x+w, y+r);
+  s.lineTo(x+w, y+h-r); s.quadraticCurveTo(x+w, y+h, x+w-r, y+h);
+  s.lineTo(x+r, y+h); s.quadraticCurveTo(x, y+h, x, y+h-r);
+  s.lineTo(x, y+r); s.quadraticCurveTo(x, y, x+r, y);
+  const g = new THREE.ExtrudeGeometry(s, { depth: d, bevelEnabled: true, bevelThickness: 0.06, bevelSize: 0.06, bevelSegments: 2 });
+  g.center();
+  const m = new THREE.Mesh(g, mat); return m;
+}
+
+function buildCar(color) {
+  while (carGroup.children.length) carGroup.remove(carGroup.children[0]);
+  const paint = new THREE.MeshStandardMaterial({ name: 'paint', color: new THREE.Color(color), metalness: 0.35, roughness: 0.42 });
+  const glass = new THREE.MeshStandardMaterial({ name: 'glass', color: 0x1a2230, metalness: 0.6, roughness: 0.15 });
+  const dark  = new THREE.MeshStandardMaterial({ name: 'trim',  color: 0x15181d, roughness: 0.7 });
+  const rim   = new THREE.MeshStandardMaterial({ name: 'rim',   color: 0x9aa3ad, metalness: 0.8, roughness: 0.35 });
+
+  const body = rc(4.2, 0.95, 1.85, 0.28, paint); body.name = 'body'; body.position.y = 0.72; body.castShadow = true; carGroup.add(body);
+  const skirt = rc(4.24, 0.34, 1.7, 0.12, dark); skirt.position.y = 0.34; carGroup.add(skirt);
+  const cabin = rc(2.5, 0.78, 1.68, 0.24, paint); cabin.name = 'cabin'; cabin.position.set(-0.15, 1.42, 0); cabin.castShadow = true; carGroup.add(cabin);
+  const glassBand = rc(2.36, 0.6, 1.72, 0.2, glass); glassBand.position.set(-0.15, 1.42, 0); carGroup.add(glassBand);
+  const cabinTop = rc(2.2, 0.4, 1.6, 0.22, paint); cabinTop.position.set(-0.2, 1.72, 0); cabinTop.castShadow = true; carGroup.add(cabinTop);
+
+  const wheelGeo = new THREE.CylinderGeometry(0.44, 0.44, 0.34, 28);
+  const rimGeo = new THREE.CylinderGeometry(0.24, 0.24, 0.36, 20);
+  [[1.28, 0.98], [1.28, -0.98], [-1.28, 0.98], [-1.28, -0.98]].forEach(([x, z]) => {
+    const tire = new THREE.Mesh(wheelGeo, dark); tire.rotation.x = Math.PI/2; tire.position.set(x, 0.44, z); tire.castShadow = true; carGroup.add(tire);
+    const r = new THREE.Mesh(rimGeo, rim); r.rotation.x = Math.PI/2; r.position.set(x, 0.44, z*1.02); carGroup.add(r);
+  });
+
+  const lightMat = new THREE.MeshStandardMaterial({ color: 0xffffff, emissive: 0xbcd2ff, emissiveIntensity: 0.5, roughness: 0.3 });
+  [[2.12, 0.6], [2.12, -0.6]].forEach(([x, z]) => { const l = new THREE.Mesh(new THREE.BoxGeometry(0.1, 0.22, 0.4), lightMat); l.position.set(x, 0.8, z); carGroup.add(l); });
+  const tailMat = new THREE.MeshStandardMaterial({ color: 0xd21f2c, emissive: 0x8a0f16, emissiveIntensity: 0.5, roughness: 0.3 });
+  [[-2.12, 0.6], [-2.12, -0.6]].forEach(([x, z]) => { const l = new THREE.Mesh(new THREE.BoxGeometry(0.1, 0.24, 0.42), tailMat); l.position.set(x, 0.85, z); carGroup.add(l); });
+
+  const signYellow = new THREE.MeshStandardMaterial({ color: 0xf4c518, roughness: 0.5 });
+  const signBlue = new THREE.MeshStandardMaterial({ color: 0x1f66e0, roughness: 0.5 });
+  const sign = new THREE.Mesh(new THREE.BoxGeometry(0.16, 0.34, 1.15), signYellow); sign.position.set(-0.2, 2.12, 0); carGroup.add(sign);
+  [-0.42, 0.42].forEach((z) => { const cap = new THREE.Mesh(new THREE.BoxGeometry(0.17, 0.35, 0.3), signBlue); cap.position.set(-0.2, 2.12, z); carGroup.add(cap); });
+}
+
+const controls = new OrbitControls(camera, renderer.domElement);
+controls.enableDamping = true; controls.dampingFactor = 0.08;
+controls.enablePan = false; controls.enableZoom = false;
+controls.autoRotate = true; controls.autoRotateSpeed = 1.1;
+controls.minPolarAngle = 0.5; controls.maxPolarAngle = Math.PI/2 - 0.05;
+controls.target.set(0, 0.85, 0);
+
+const nameEl = document.getElementById('vname');
+const descEl = document.getElementById('vdesc');
+const dotsWrap = document.getElementById('dots');
+let idx = 0;
+const dots = vehicles.map((v, i) => {
+  const d = document.createElement('button'); d.setAttribute('aria-label', v.name);
+  if (i === 0) d.style.background = '#e01b2c';
+  d.addEventListener('click', () => setVehicle(i));
+  dotsWrap.appendChild(d); return d;
+});
+function setVehicle(i) {
+  idx = (i + vehicles.length) % vehicles.length;
+  const v = vehicles[idx];
+  buildCar(v.color); nameEl.textContent = v.name; descEl.textContent = v.desc;
+  dots.forEach((d, di) => d.style.background = di === idx ? '#e01b2c' : '#cfd6e2');
+}
+document.getElementById('prev').addEventListener('click', () => setVehicle(idx - 1));
+document.getElementById('next').addEventListener('click', () => setVehicle(idx + 1));
+
+buildCar(vehicles[0].color);
+
+addEventListener('resize', () => { camera.aspect = W()/H(); camera.updateProjectionMatrix(); renderer.setSize(W(), H()); });
+(function loop(){ requestAnimationFrame(loop); controls.update(); renderer.render(scene, camera); })();
+</script>
+</body>
+</html>

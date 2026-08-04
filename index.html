@@ -47,8 +47,10 @@
   @keyframes gradShift{0%,100%{transform:translate(0,0);}50%{transform:translate(6%,4%);}}
   @keyframes stripeMove{to{background-position:64px 0;}}
   @keyframes chipPulse{0%{box-shadow:0 0 0 0 rgba(31,143,230,0.6);}70%{box-shadow:0 0 0 9px rgba(31,143,230,0);}100%{box-shadow:0 0 0 0 rgba(31,143,230,0);}}
+  @keyframes ctaPulse{0%,100%{box-shadow:0 14px 30px -10px rgba(31,143,230,0.7),0 0 0 0 rgba(31,143,230,0.55);}70%{box-shadow:0 14px 30px -10px rgba(31,143,230,0.7),0 0 0 14px rgba(31,143,230,0);}}
   @keyframes scrollDot{0%{opacity:0;transform:translateY(-4px);}40%{opacity:1;}100%{opacity:0;transform:translateY(8px);}}
   @keyframes heroReveal{from{opacity:0;transform:translateY(26px);}to{opacity:1;transform:none;}}
+  #pocetna .hero-badge,#pocetna h1,#pocetna .hero-sub,#pocetna .hero-sub-mob,#pocetna .hero-cta,#pocetna .hero-scroll{opacity:1 !important;animation:none !important;transform:none !important;}
   @keyframes roadDash{to{background-position:-70px 0;}}
   @keyframes drive1{0%{transform:translateX(0);}100%{transform:translateX(calc(100vw + 300px));}}
   @keyframes drive2{0%{transform:translateX(0);}100%{transform:translateX(calc(100vw + 380px));}}
@@ -57,6 +59,7 @@
   @keyframes marquee{from{transform:translateX(0);}to{transform:translateX(-50%);}}
   .marquee-track{display:flex;width:max-content;animation:marquee 40s linear infinite;}
   .mob-br{display:none;}
+  .title-br{display:none;}
   .hero-overlay-mob{display:none;}
   .marquee-mask:hover .marquee-track{animation-play-state:paused;}
   .btn-call{display:none;}
@@ -74,16 +77,22 @@
     #vrh .header-inner{flex-wrap:wrap !important;position:relative !important;}
     #vrh .hamburger{position:absolute !important;top:12px !important;right:16px !important;}
     .sec-head{text-align:center !important;}
+    .sec-head h2, #o-nama .reveal h2, #prijava .reveal h2{font-size:26px !important;}
+    #prijava .reveal{text-align:center !important;}
+    #prijava .reveal > div:first-child{justify-content:center !important;}
+    .sec-head > div:first-child{justify-content:center !important;}
+    #o-nama .reveal, #usluge .sec-head, #kategorije .sec-head, #zasto .sec-head{text-align:center !important;}
+    .sec-head p, #o-nama p, #usluge p, #pitanja p, #prijava p{font-size:16px !important;}
+    #pitanja > div:last-child > div div[style*='padding']{font-size:15.5px !important;}
     #hero-stats{background:linear-gradient(120deg,var(--navy),var(--navy-2)) !important;}
-    #hero-stats .stats-grid{grid-template-columns:1fr !important;gap:0 !important;padding:20px 16px !important;margin-left:0 !important;margin-right:0 !important;max-width:100% !important;background:transparent !important;border:none !important;box-shadow:none !important;backdrop-filter:none !important;}
-    #hero-stats .stats-grid > div{padding:16px 12px !important;border:none !important;border-radius:0 !important;background:transparent !important;box-shadow:none !important;text-align:center !important;}
-    #hero-stats .stats-grid > div:nth-child(n+2){border-top:none !important;}
-    #hero-stats .stats-grid > div > div:first-child{font-size:28px !important;color:#fff !important;}
-    #hero-stats .stats-grid > div > div:last-child{color:rgba(255,255,255,0.72) !important;}
+    #hero-stats .stats-grid{grid-template-columns:1fr !important;gap:0 !important;padding:36px 16px !important;margin-left:0 !important;margin-right:0 !important;max-width:100% !important;background:transparent !important;border:none !important;box-shadow:none !important;backdrop-filter:none !important;}
+    #hero-stats .stats-grid > div{padding:22px 12px !important;}
+    #hero-stats .stats-grid > div > div > div:first-child{font-size:46px !important;}
     .mob-br{display:inline !important;}
     .btn-cats{display:none !important;}
     .btn-call{display:inline-flex !important;}
-    #o-nama .reveal, #prijava .prijava-grid > .reveal:first-child{text-align:left !important;}
+    .hero-cta a[href='#prijava']{animation:ctaPulse 1.8s ease-out infinite !important;}
+    #o-nama .reveal{text-align:left !important;}
     #o-nama .reveal > div[style*='text-align:center']{text-align:left !important;}
     #o-nama .onama-grid > div:first-child > div[style*='grid']{justify-items:start;}
     #pitanja button{font-size:15px !important;padding:16px 16px !important;}
@@ -127,10 +136,13 @@
     footer > div{padding-left:0 !important;padding-right:0 !important;}
     .footer-grid{grid-template-columns:1fr !important;gap:32px !important;}
     .footer-links{display:none !important;}
+    .mob-topbar{display:block !important;}
     .zasto-grid{grid-template-columns:1fr !important;}
     .zasto-grid > div{grid-column:auto !important;}
     .zasto-float{grid-template-columns:1fr !important;gap:12px !important;}
     .zasto-title{white-space:normal !important;}
+    .cats-title{white-space:normal !important;}
+    .title-br{display:inline !important;}
     #kategorije{padding-bottom:36px !important;}
     #kategorije .cat-grid[data-grid="2"]{margin-bottom:0 !important;}
     #zasto{background:linear-gradient(120deg,#eef2fa,#f7eef0) !important;}
@@ -138,12 +150,14 @@
     #zasto .sec-head p{color:var(--muted) !important;}
     #zasto .sec-head > div:first-child{color:var(--accent) !important;}
 
-    #pocetna{min-height:100svh !important;aspect-ratio:auto !important;}
+    #pocetna{min-height:calc(100svh - 30px) !important;aspect-ratio:auto !important;}
     #hero-video{object-fit:cover !important;}
-    #pocetna h1{font-size:clamp(38px,11vw,54px) !important;line-height:1.05 !important;white-space:normal !important;}
+    .hero-inner{padding:24px 20px 72px !important;align-items:flex-start !important;text-align:left !important;justify-content:flex-start !important;}
+    #pocetna h1{font-size:clamp(38px,11vw,54px) !important;line-height:1.05 !important;white-space:normal !important;text-align:left !important;}
     #pocetna h1 .mob-br{display:inline !important;}
+    .hero-badge{align-self:flex-start !important;}
     .hero-sub{display:none !important;}
-    .hero-sub-mob{display:block !important;margin:16px 0 0 !important;}
+    .hero-sub-mob{display:block !important;margin:16px 0 0 !important;text-align:left !important;}
     .hero-cta{width:100% !important;margin-top:30px !important;}
     .hero-cta a{flex:1 1 100% !important;text-align:center !important;justify-content:center !important;}
     .hero-scroll{display:none !important;}
@@ -190,10 +204,17 @@
 </helmet>
 <div data-accent="{{ accentAttr }}" data-reduce="{{ reduceAttr }}" style="overflow-x:clip">
 
+  <a class="mob-topbar" href="tel:0641541509" style="display:none;background:linear-gradient(120deg,var(--accent),#125a97);color:#fff;text-decoration:none;position:sticky;top:0;z-index:70">
+    <div style="max-width:640px;margin:0 auto;padding:9px 16px;display:flex;align-items:center;justify-content:center;gap:16px;font-size:13px;font-weight:600">
+      <span style="display:inline-flex;align-items:center;gap:6px"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 12-9 12s-9-5-9-12a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>Žive Jovanovića 8, Vršac</span>
+      <span style="display:inline-flex;align-items:center;gap:6px;font-weight:800"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>064/1541509</span>
+    </div>
+  </a>
+
   <header id="vrh" class="{{ headerClass }}" style="position:sticky;top:0;z-index:60;background:rgba(255,255,255,0.88);backdrop-filter:blur(14px);border-bottom:1px solid var(--line)">
-    <div class="header-inner" style="max-width:1200px;margin:0 auto;padding:12px 24px;display:flex;align-items:center;justify-content:space-between;gap:20px;flex-wrap:wrap">
+    <div class="header-inner" style="max-width:1200px;margin:0 auto;padding:20px 24px;display:flex;align-items:center;justify-content:space-between;gap:20px;flex-wrap:wrap">
       <a href="#pocetna" style="display:flex;align-items:center;gap:10px">
-        <img src="uploads/logo-renipro.png" alt="Auto škola Reni Pro" style="height:44px;width:auto">
+        <img src="uploads/logo-renipro.png" alt="Auto škola Reni Pro" style="height:36px;width:auto">
       </a>
       <button class="hamburger" onClick="{{ onToggleMenu }}" aria-label="Meni" style="display:none;align-items:center;justify-content:center;width:46px;height:46px;border:1px solid var(--line);border-radius:12px;background:#fff;color:var(--navy);cursor:pointer">
         <svg class="ic-open" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M3 6h18"></path><path d="M3 12h18"></path><path d="M3 18h18"></path></svg>
@@ -219,7 +240,7 @@
   </header>
 
   <section id="pocetna" style="position:relative;min-height:100svh;display:flex;align-items:center;justify-content:center;overflow:hidden;background:var(--navy)">
-    <video id="hero-video" autoplay="" muted="" loop="" playsinline="" src="uploads/6011545_Car_Vehicle_1280x720.mp4" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;filter:contrast(1.05) saturate(1.08) brightness(1.0)"></video>
+    <video id="hero-video" autoplay="" muted="" loop="" playsinline="" preload="auto" src="uploads/6011545_Car_Vehicle_1280x720.mp4" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;filter:contrast(1.05) saturate(1.08) brightness(1.0)"></video>
     <div style="position:absolute;inset:0;background:linear-gradient(180deg,rgba(8,12,22,0.6) 0%,rgba(8,12,22,0.4) 45%,rgba(8,12,22,0.78) 100%)"></div>
     <div style="position:absolute;inset:0;background:radial-gradient(115% 80% at 50% 45%,transparent 40%,rgba(8,12,22,0.6) 100%)"></div>
     <div style="position:absolute;bottom:0;right:0;width:240px;height:96px;background:radial-gradient(ellipse at bottom right, rgba(8,12,22,0.9) 0%, rgba(8,12,22,0) 74%);pointer-events:none;z-index:2"></div>
@@ -228,13 +249,13 @@
 
       <div class="hero-badge" style="display:inline-flex;align-items:center;gap:10px;padding:8px 18px;border-radius:999px;background:rgba(255,255,255,0.1);border:1px solid rgba(255,255,255,0.2);backdrop-filter:blur(6px);font-size:13px;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;color:rgba(255,255,255,0.9);margin-bottom:30px;opacity:0;animation:heroReveal .8s ease-out 1.2s forwards">
         <span style="width:7px;height:7px;border-radius:50%;background:var(--accent);box-shadow:0 0 0 0 rgba(31,143,230,0.7);animation:chipPulse 1.8s ease-out infinite"></span>
-        od 2016.
+        Auto škola · od 2016.
       </div>
 
       <h1 style="font-family:'Oswald',sans-serif;font-size:clamp(38px,7vw,96px);line-height:0.98;font-weight:700;margin:0;white-space:nowrap;text-transform:uppercase;letter-spacing:0.01em;text-shadow:0 4px 30px rgba(0,0,0,0.45);opacity:0;animation:heroReveal 1s ease-out 1.5s forwards">Lako i sigurno <br class="mob-br">do <span style="color:var(--accent)">dozvole</span></h1>
 
-      <p class="hero-sub" style="font-size:clamp(16px,1.5vw,20px);line-height:1.6;color:rgba(255,255,255,0.82);margin:24px auto 0;max-width:none;white-space:nowrap;opacity:0;animation:heroReveal 1s ease-out 2s forwards">Individualni pristup, iskusni instruktori i obuka za sve kategorije.</p>
-      <p class="hero-sub-mob" style="display:none;font-size:16px;line-height:1.55;color:rgba(255,255,255,0.72);margin:16px 0 0;opacity:0;animation:heroReveal 1s ease-out 2s forwards">Tvoj mir na putu počinje ovde.</p>
+      <p class="hero-sub" style="font-size:clamp(16px,1.5vw,20px);line-height:1.6;color:rgba(255,255,255,0.82);margin:24px auto 0;max-width:520px;opacity:0;animation:heroReveal 1s ease-out 2s forwards">Sigurna vožnja, strpljiv instruktor i odlična auto škola.</p>
+      <p class="hero-sub-mob" style="display:none;font-size:16px;line-height:1.55;color:rgba(255,255,255,0.72);margin:16px 0 0;opacity:0;animation:heroReveal 1s ease-out 2s forwards">Sigurna vožnja, strpljiv instruktor<br>i odlična auto škola.</p>
 
       <div class="hero-cta" style="display:flex;gap:14px;flex-wrap:wrap;justify-content:center;margin-top:38px;opacity:0;animation:heroReveal 1s ease-out 2.4s forwards">
         <a href="#prijava" style="background:var(--accent);color:#fff;padding:16px 34px;border-radius:12px;font-weight:700;font-size:17px;box-shadow:0 16px 34px -12px var(--accent)" style-hover="transform:translateY(-3px);filter:brightness(1.05)">Prijavi se online</a>
@@ -251,23 +272,21 @@
     </a>
   </section>
 
-  <div id="hero-stats" style="background:linear-gradient(120deg,#eef2fa,#f7eef0);color:var(--ink);position:relative;overflow:hidden">
-    <div class="stats-grid" style="position:relative;width:100%;margin:0;padding:22px 24px;display:grid;grid-template-columns:repeat(4,1fr);gap:0;background:rgba(255,255,255,0.5);border-top:1px solid rgba(255,255,255,0.8);border-bottom:1px solid rgba(255,255,255,0.8);box-shadow:0 16px 34px -28px rgba(14,33,64,0.5);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px)">
-      <div style="text-align:center;padding:6px 16px">
-        <div style="font-family:'Poppins';font-size:clamp(34px,4.2vw,50px);font-weight:700;line-height:1;color:var(--navy);font-variant-numeric:tabular-nums">{{ statYear }}</div>
-        <div style="font-size:13px;color:var(--muted);margin-top:8px;font-weight:500">Godina iskustva</div>
+  <div id="hero-stats" style="background:linear-gradient(135deg,var(--navy),var(--navy-2));color:#fff;position:relative;overflow:hidden">
+    <div aria-hidden="true" style="position:absolute;top:-40%;right:6%;width:280px;height:280px;border-radius:50%;background:radial-gradient(circle,rgba(31,143,230,0.35),transparent 70%);filter:blur(24px);pointer-events:none"></div>
+    <div aria-hidden="true" style="position:absolute;bottom:-50%;left:4%;width:260px;height:260px;border-radius:50%;background:radial-gradient(circle,rgba(31,102,224,0.3),transparent 70%);filter:blur(24px);pointer-events:none"></div>
+    <div class="stats-grid" style="position:relative;max-width:1160px;margin:0 auto;padding:52px 24px;display:grid;grid-template-columns:repeat(4,1fr);gap:16px">
+      <div style="display:flex;flex-direction:column;align-items:center;text-align:center;padding:14px 16px">
+        <div><div style="font-family:'Poppins';font-size:clamp(38px,4vw,54px);font-weight:700;line-height:1;color:#fff;font-variant-numeric:tabular-nums;padding-bottom:16px;border-bottom:3px solid var(--accent);display:inline-block">{{ statYear }}</div><div style="font-size:15px;color:rgba(255,255,255,0.72);margin-top:16px;font-weight:500">Godina iskustva</div></div>
       </div>
-      <div style="text-align:center;padding:6px 16px;border-left:1px solid rgba(14,33,64,0.1)">
-        <div style="font-family:'Poppins';font-size:clamp(34px,4.2vw,50px);font-weight:700;line-height:1;color:var(--navy);font-variant-numeric:tabular-nums">{{ statRec }}+</div>
-        <div style="font-size:13px;color:var(--muted);margin-top:8px;font-weight:500">Zadovoljnih vozača</div>
+      <div style="display:flex;flex-direction:column;align-items:center;text-align:center;padding:14px 16px">
+        <div><div style="font-family:'Poppins';font-size:clamp(38px,4vw,54px);font-weight:700;line-height:1;color:#fff;font-variant-numeric:tabular-nums;padding-bottom:16px;border-bottom:3px solid var(--accent);display:inline-block">{{ statRec }}+</div><div style="font-size:15px;color:rgba(255,255,255,0.72);margin-top:16px;font-weight:500">Zadovoljnih vozača</div></div>
       </div>
-      <div style="text-align:center;padding:6px 16px;border-left:1px solid rgba(14,33,64,0.1)">
-        <div style="font-family:'Poppins';font-size:clamp(34px,4.2vw,50px);font-weight:700;line-height:1;color:var(--navy);font-variant-numeric:tabular-nums">{{ statCat }}</div>
-        <div style="font-size:13px;color:var(--muted);margin-top:8px;font-weight:500">Kategorija</div>
+      <div style="display:flex;flex-direction:column;align-items:center;text-align:center;padding:14px 16px">
+        <div><div style="font-family:'Poppins';font-size:clamp(38px,4vw,54px);font-weight:700;line-height:1;color:#fff;font-variant-numeric:tabular-nums;padding-bottom:16px;border-bottom:3px solid var(--accent);display:inline-block">{{ statCat }}</div><div style="font-size:15px;color:rgba(255,255,255,0.72);margin-top:16px;font-weight:500">Kategorija</div></div>
       </div>
-      <div style="text-align:center;padding:6px 16px;border-left:1px solid rgba(14,33,64,0.1)">
-        <div style="font-family:'Poppins';font-size:clamp(34px,4.2vw,50px);font-weight:700;line-height:1;color:var(--navy);font-variant-numeric:tabular-nums">{{ statLoc }}</div>
-        <div style="font-size:13px;color:var(--muted);margin-top:8px;font-weight:500">Ocena na Google-u</div>
+      <div style="display:flex;flex-direction:column;align-items:center;text-align:center;padding:14px 16px">
+        <div><div style="font-family:'Poppins';font-size:clamp(38px,4vw,54px);font-weight:700;line-height:1;color:#fff;font-variant-numeric:tabular-nums;padding-bottom:16px;border-bottom:3px solid var(--accent);display:inline-block">{{ statLoc }}</div><div style="font-size:15px;color:rgba(255,255,255,0.72);margin-top:16px;font-weight:500">Ocena na Google-u</div></div>
       </div>
     </div>
   </div>
@@ -278,7 +297,7 @@
     <div style="position:relative;z-index:1;max-width:1200px;margin:0 auto;padding:0 24px">
       <div class="reveal sec-head side-in" style="text-align:center;max-width:760px;margin:0 auto 48px">
         <div style="display:inline-flex;align-items:center;gap:9px;color:#7fa6ee;font-weight:700;font-size:14px;letter-spacing:0.1em;text-transform:uppercase;margin-bottom:14px;justify-content:center"><span class="eyebrow-wheel"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><circle cx="12" cy="12" r="6"></circle><circle cx="12" cy="12" r="1.6" fill="currentColor" stroke="none"></circle><path d="M12 6V2.5M12 21.5V18M6 12H2.5M21.5 12H18" stroke-width="1.8"></path></svg></span>Zašto baš mi</div>
-        <h2 class="zasto-title" style="font-size:clamp(30px,4vw,46px);color:#fff;line-height:1.08;white-space:nowrap">Razlozi zbog kojih nam veruju</h2>
+        <h2 class="zasto-title" style="font-size:clamp(30px,4vw,46px);color:#fff;line-height:1.08;white-space:nowrap">Razlozi zbog kojih<br class="title-br">nam veruju</h2>
         <p style="color:rgba(255,255,255,0.72);font-size:17px;margin-top:16px">Od 2016. godine gradimo poverenje kroz individualni pristup i vrhunsku obuku.</p>
       </div>
       <div class="zasto-float" style="display:grid;grid-template-columns:repeat(4,1fr);gap:22px">
@@ -309,7 +328,7 @@
   <section id="usluge" style="max-width:1200px;margin:0 auto;padding:80px 24px 90px">
     <div class="reveal sec-head side-in" style="text-align:center;max-width:640px;margin:0 auto 44px">
       <div style="display:inline-flex;align-items:center;gap:9px;color:var(--accent);font-weight:700;font-size:14px;letter-spacing:0.1em;text-transform:uppercase;margin-bottom:14px;justify-content:center"><span class="eyebrow-wheel"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><circle cx="12" cy="12" r="6"></circle><circle cx="12" cy="12" r="1.6" fill="currentColor" stroke="none"></circle><path d="M12 6V2.5M12 21.5V18M6 12H2.5M21.5 12H18" stroke-width="1.8"></path></svg></span>Naše usluge</div>
-      <h2 style="font-size:clamp(30px,4vw,44px);color:var(--navy);line-height:1.08">Sve na jednom mestu</h2>
+      <h2 style="font-size:clamp(30px,4vw,46px);color:var(--navy);line-height:1.08">Sve na jednom mestu</h2>
     </div>
     <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:24px">
       <sc-for list="{{ services }}" as="s" hint-placeholder-count="3">
@@ -333,7 +352,7 @@
     <div style="position:relative;z-index:1;max-width:1200px;margin:0 auto;padding:0 24px">
       <div class="reveal sec-head" style="text-align:center;max-width:640px;margin:0 auto 56px">
         <div style="display:inline-flex;align-items:center;gap:9px;color:#7fa6ee;font-weight:700;font-size:14px;letter-spacing:0.1em;text-transform:uppercase;margin-bottom:14px;justify-content:center"><span class="eyebrow-wheel"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><circle cx="12" cy="12" r="6"></circle><circle cx="12" cy="12" r="1.6" fill="currentColor" stroke="none"></circle><path d="M12 6V2.5M12 21.5V18M6 12H2.5M21.5 12H18" stroke-width="1.8"></path></svg></span>Kategorije obuke</div>
-        <h2 style="font-size:clamp(30px,4vw,46px);color:#fff;line-height:1.08">Obučavamo za sve kategorije</h2>
+        <h2 class="cats-title" style="font-size:clamp(30px,4vw,46px);color:#fff;line-height:1.08;white-space:nowrap">Obučavamo za<br class="title-br">sve kategorije</h2>
         <p style="color:rgba(255,255,255,0.7);font-size:17px;margin-top:16px">Od mopeda i motocikala do putničkih i teretnih vozila.</p>
       </div>
 
@@ -534,7 +553,7 @@
     <div class="prijava-grid" style="display:grid;grid-template-columns:1fr;gap:36px;align-items:start;max-width:640px;margin:0 auto">
       <div class="reveal side-in from-right" style="text-align:center">
         <div style="display:inline-flex;align-items:center;gap:9px;color:var(--accent);font-weight:700;font-size:14px;letter-spacing:0.1em;text-transform:uppercase;margin-bottom:14px;justify-content:center"><span class="eyebrow-wheel"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><circle cx="12" cy="12" r="6"></circle><circle cx="12" cy="12" r="1.6" fill="currentColor" stroke="none"></circle><path d="M12 6V2.5M12 21.5V18M6 12H2.5M21.5 12H18" stroke-width="1.8"></path></svg></span>Online prijava</div>
-        <h2 style="font-size:clamp(30px,4vw,44px);color:var(--navy);line-height:1.08">Upiši se online</h2>
+        <h2 style="font-size:clamp(30px,4vw,46px);color:var(--navy);line-height:1.08">Upiši se online</h2>
         <p class="prijava-sub" style="font-size:17px;line-height:1.7;color:var(--muted);margin:22px 0 0">Popunite kratku prijavu i javićemo vam se u najkraćem roku sa svim detaljima o obuci, terminima i ceni. Bez obaveze.</p>
         <div style="display:flex;flex-wrap:wrap;justify-content:center;gap:18px;margin-top:18px">
           <div class="prijava-contact" style="display:flex;gap:10px;align-items:center;color:var(--ink);font-weight:600"><span style="color:var(--accent);display:inline-flex"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"></path></svg></span><a href="tel:0641541509" style="color:var(--ink)">064/1541509</a></div>
@@ -570,14 +589,12 @@
               <div>
                 <label style="display:block;font-size:14px;font-weight:600;color:var(--navy);margin-bottom:7px">Kategorija</label>
                 <select value="{{ fCat }}" onChange="{{ onCat }}" style="width:100%;padding:13px 15px;border:1px solid var(--line);border-radius:12px;font-family:inherit;font-size:15px;background:var(--bg);color:var(--ink);cursor:pointer" style-focus="border-color:var(--accent);outline:none">
-                  <option value="A">A</option>
                   <option value="A1">A1</option>
-                  <option value="A2">A2</option>
-                  <option value="AM">AM</option>
                   <option value="B">B</option>
-                  <option value="BE">BE</option>
                   <option value="C">C</option>
                   <option value="CE">CE</option>
+                  <option value="D">D</option>
+                  <option value="F">F</option>
                 </select>
               </div>
               <div>
@@ -607,6 +624,10 @@
   </a>
 
   
+
+  <a href="tel:0641541509" class="mob-fab-call" aria-label="Pozovite nas" style="display:none;position:fixed;right:24px;bottom:88px;z-index:90;width:54px;height:54px;border-radius:50%;background:var(--accent);color:#fff;align-items:center;justify-content:center;box-shadow:0 12px 28px -8px rgba(31,143,230,0.6);animation:ctaPulse 1.8s ease-out infinite">
+    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
+  </a>
 
   <a href="#vrh" title="Nazad na vrh" style="position:fixed;right:24px;bottom:24px;z-index:90;width:54px;height:54px;border-radius:50%;background:var(--accent);color:#fff;display:flex;align-items:center;justify-content:center;box-shadow:0 12px 28px -8px rgba(31,143,230,0.6);transition:transform .25s ease,opacity .3s ease,visibility .3s ease;opacity:{{ topOpacity }};visibility:{{ topVis }}" style-hover="transform:translateY(-5px)">
     <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M12 19V5"></path><path d="M5 12l7-7 7 7"></path></svg>
