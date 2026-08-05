@@ -22,7 +22,7 @@
   img{display:block;max-width:100%;}
   .tcard:hover .tphoto{transform:scale(1.05);}
   .tcard:hover .tov{opacity:1;}
-  @media(max-width:720px){ .owners-grid{grid-template-columns:1fr !important;} .team-grid{grid-template-columns:1fr !important;} .tov{opacity:1 !important;} .member-modal{grid-template-columns:1fr !important;max-height:88vh !important;overflow-y:auto !important;} .member-modal > img{max-height:280px !important;} }
+  @media(max-width:720px){ .owners-grid{grid-template-columns:1fr !important;} .team-grid{grid-template-columns:1fr !important;} .tov{display:none !important;} .member-modal{grid-template-columns:1fr !important;max-height:88vh !important;overflow-y:auto !important;} .member-modal > img{max-height:280px !important;} }
 </style>
 </helmet>
 <div style="min-height:100vh;display:flex;flex-direction:column">
@@ -74,6 +74,7 @@
           <div style="padding:20px">
             <h3 style="font-size:19px;color:var(--navy)">{{ m.name }}</h3>
             <div style="color:var(--accent);font-weight:600;font-size:14px;margin-top:4px">{{ m.role }}</div>
+            <button onClick="{{ m.onOpen }}" style="margin-top:16px;width:100%;display:inline-flex;align-items:center;justify-content:center;gap:8px;background:var(--accent);color:#fff;border:none;padding:11px 18px;border-radius:10px;font-family:inherit;font-weight:700;font-size:14px;cursor:pointer" style-hover="filter:brightness(1.06)">Pročitaj više <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></button>
           </div>
         </div>
       </sc-for>

@@ -152,12 +152,17 @@
 
     #pocetna{min-height:calc(100svh - 30px) !important;aspect-ratio:auto !important;}
     #hero-video{object-fit:cover !important;}
-    .hero-inner{padding:24px 20px 72px !important;align-items:flex-start !important;text-align:left !important;justify-content:flex-start !important;}
+    .hero-inner{padding:24px 20px 108px !important;align-items:flex-start !important;text-align:left !important;justify-content:flex-start !important;}
+    .hero-dashes{display:flex !important;}
+    .hero-proof{display:flex !important;}
+    .hero-scroll{display:none !important;}
     #pocetna h1{font-size:clamp(38px,11vw,54px) !important;line-height:1.05 !important;white-space:normal !important;text-align:left !important;}
     #pocetna h1 .mob-br{display:inline !important;}
     .hero-badge{align-self:flex-start !important;}
+    .hero-dashes{align-self:flex-start !important;}
+    .hero-cta a[href='#prijava']{flex-direction:row-reverse !important;}
     .hero-sub{display:none !important;}
-    .hero-sub-mob{display:block !important;margin:16px 0 0 !important;text-align:left !important;}
+    .hero-sub-mob{display:block !important;margin:22px 0 0 !important;text-align:left !important;font-size:16px !important;color:rgba(255,255,255,0.78) !important;line-height:1.5 !important;}
     .hero-cta{width:100% !important;margin-top:30px !important;}
     .hero-cta a{flex:1 1 100% !important;text-align:center !important;justify-content:center !important;}
     .hero-scroll{display:none !important;}
@@ -245,17 +250,24 @@
     <div style="position:absolute;inset:0;background:radial-gradient(115% 80% at 50% 45%,transparent 40%,rgba(8,12,22,0.6) 100%)"></div>
     <div style="position:absolute;bottom:0;right:0;width:240px;height:96px;background:radial-gradient(ellipse at bottom right, rgba(8,12,22,0.9) 0%, rgba(8,12,22,0) 74%);pointer-events:none;z-index:2"></div>
 
-    <div class="hero-inner" style="position:relative;z-index:3;max-width:1000px;margin:0 auto;padding:120px 24px;width:100%;display:flex;flex-direction:column;align-items:center;text-align:center;color:#fff">
+    <div class="hero-inner" style="position:relative;z-index:3;max-width:1200px;margin:0 auto;padding:76px 24px 120px;width:100%;display:flex;flex-direction:column;align-items:center;text-align:center;color:#fff">
 
-      <div class="hero-badge" style="display:inline-flex;align-items:center;gap:10px;padding:8px 18px;border-radius:999px;background:rgba(255,255,255,0.1);border:1px solid rgba(255,255,255,0.2);backdrop-filter:blur(6px);font-size:13px;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;color:rgba(255,255,255,0.9);margin-bottom:30px;opacity:0;animation:heroReveal .8s ease-out 1.2s forwards">
-        <span style="width:7px;height:7px;border-radius:50%;background:var(--accent);box-shadow:0 0 0 0 rgba(31,143,230,0.7);animation:chipPulse 1.8s ease-out infinite"></span>
+      <div class="hero-badge" style="display:inline-flex;align-items:center;gap:11px;padding:7px 16px 7px 8px;border-radius:999px;background:rgba(255,255,255,0.08);border:1px solid rgba(255,255,255,0.16);backdrop-filter:blur(6px);font-size:12.5px;font-weight:700;letter-spacing:0.09em;text-transform:uppercase;color:rgba(255,255,255,0.92);margin-bottom:26px;opacity:0;animation:heroReveal .8s ease-out 1.2s forwards">
+        <span style="width:26px;height:26px;border-radius:8px;background:var(--accent);color:#fff;display:flex;align-items:center;justify-content:center;font-family:'Poppins';font-weight:800;font-size:14px">R</span>
         Auto škola · od 2016.
       </div>
 
-      <h1 style="font-family:'Oswald',sans-serif;font-size:clamp(38px,7vw,96px);line-height:0.98;font-weight:700;margin:0;white-space:nowrap;text-transform:uppercase;letter-spacing:0.01em;text-shadow:0 4px 30px rgba(0,0,0,0.45);opacity:0;animation:heroReveal 1s ease-out 1.5s forwards">Lako i sigurno <br class="mob-br">do <span style="color:var(--accent)">dozvole</span></h1>
+      <h1 class="hero-h1" style="font-family:'Oswald',sans-serif;font-size:clamp(46px,8.5vw,116px);line-height:1.02;font-weight:700;margin:0;text-transform:uppercase;letter-spacing:0.01em;text-shadow:0 4px 30px rgba(0,0,0,0.45);opacity:0;animation:heroReveal 1s ease-out 1.5s forwards">Lako i sigurno<br>do <span style="color:var(--accent)">dozvole</span></h1>
 
-      <p class="hero-sub" style="font-size:clamp(16px,1.5vw,20px);line-height:1.6;color:rgba(255,255,255,0.82);margin:24px auto 0;max-width:520px;opacity:0;animation:heroReveal 1s ease-out 2s forwards">Sigurna vožnja, strpljiv instruktor i odlična auto škola.</p>
-      <p class="hero-sub-mob" style="display:none;font-size:16px;line-height:1.55;color:rgba(255,255,255,0.72);margin:16px 0 0;opacity:0;animation:heroReveal 1s ease-out 2s forwards">Sigurna vožnja, strpljiv instruktor<br>i odlična auto škola.</p>
+      <div class="hero-dashes" style="display:flex;gap:8px;margin-top:24px;justify-content:center;opacity:0;animation:heroReveal 1s ease-out 1.8s forwards">
+        <span style="width:30px;height:4px;border-radius:2px;background:var(--accent)"></span>
+        <span style="width:30px;height:4px;border-radius:2px;background:rgba(255,255,255,0.55)"></span>
+        <span style="width:30px;height:4px;border-radius:2px;background:rgba(255,255,255,0.28)"></span>
+        <span style="width:30px;height:4px;border-radius:2px;background:rgba(255,255,255,0.16)"></span>
+      </div>
+
+      <p class="hero-sub" style="font-size: clamp(16px,1.5vw,20px); line-height: 1.6; color: rgba(255,255,255,0.82); margin: 24px auto 0; max-width: 560px; opacity: 0; animation: heroReveal 1s ease-out 2s forwards; width: 572px; height: 64px">Sigurna vožnja, strpljiv instruktor i odlična auto škola, sve što ti treba da položiš iz prve.</p>
+      <p class="hero-sub-mob" style="display:none;font-size:16px;line-height:1.5;color:rgba(255,255,255,0.78);margin:22px 0 0;opacity:0;animation:heroReveal 1s ease-out 2s forwards">Sigurna vožnja, strpljiv instruktor<br>i odlična auto škola — sve što ti<br>treba da položiš iz prve.</p>
 
       <div class="hero-cta" style="display:flex;gap:14px;flex-wrap:wrap;justify-content:center;margin-top:38px;opacity:0;animation:heroReveal 1s ease-out 2.4s forwards">
         <a href="#prijava" style="background:var(--accent);color:#fff;padding:16px 34px;border-radius:12px;font-weight:700;font-size:17px;box-shadow:0 16px 34px -12px var(--accent)" style-hover="transform:translateY(-3px);filter:brightness(1.05)">Prijavi se online</a>
@@ -264,12 +276,14 @@
       </div>
     </div>
 
-    <a href="#o-nama" class="hero-scroll" aria-label="Skroluj niže" style="position:absolute;left:50%;bottom:26px;transform:translateX(-50%);z-index:3;display:flex;flex-direction:column;align-items:center;gap:8px;color:rgba(255,255,255,0.7);font-size:11px;letter-spacing:0.14em;text-transform:uppercase;opacity:0;animation:heroReveal 1s ease-out 2.8s forwards" style-hover="color:#fff">
-      <span>Saznaj više</span>
-      <span style="width:26px;height:42px;border:2px solid rgba(255,255,255,0.45);border-radius:14px;display:flex;justify-content:center;padding-top:7px">
-        <span style="width:4px;height:8px;border-radius:2px;background:#fff;animation:scrollDot 1.6s ease-in-out infinite"></span>
+    <div class="hero-proof" style="display:none;position:absolute;left:0;right:0;bottom:0;z-index:3;padding:16px 20px;background:linear-gradient(180deg,rgba(8,12,22,0) 0%,rgba(8,12,22,0.72) 40%);align-items:center;gap:12px">
+      <span style="display:flex;flex-shrink:0">
+        <span style="width:26px;height:26px;border-radius:50%;background:var(--accent);border:2px solid var(--navy)"></span>
+        <span style="width:26px;height:26px;border-radius:50%;background:#3f7fd6;border:2px solid var(--navy);margin-left:-10px"></span>
+        <span style="width:26px;height:26px;border-radius:50%;background:#7f8a9c;border:2px solid var(--navy);margin-left:-10px"></span>
       </span>
-    </a>
+      <span style="font-size:13.5px;color:rgba(255,255,255,0.82);line-height:1.35"><strong style="color:#fff">3500+ vozača</strong> položilo je uz Reni-Pro</span>
+    </div>
   </section>
 
   <div id="hero-stats" style="background:linear-gradient(135deg,var(--navy),var(--navy-2));color:#fff;position:relative;overflow:hidden">
@@ -724,7 +738,7 @@ class Component extends DCLogic {
   componentDidMount() {
     const v = document.getElementById('hero-video');
     if (v) {
-      v.playbackRate = 1.8;
+      v.playbackRate = 2.4;
       v.muted = true;
       v.volume = 0;
       v.setAttribute('muted', '');
@@ -1067,7 +1081,7 @@ class Component extends DCLogic {
       chipPad: '11px',
       headerClass: this.state.menuOpen ? 'menu-open' : '',
       chipDisplay: (this.state.menuOpen || !this.state.chipNear) ? 'none' : 'flex',
-      onToggleMenu: () => this.setState(s => ({ menuOpen: !s.menuOpen })),
+      onToggleMenu: () => this.setState(s => { const open = !s.menuOpen; if (open) window.scrollTo({ top: 0, behavior: 'smooth' }); return { menuOpen: open }; }),
       onCloseMenu: (e) => {
         const href = e && e.target && e.target.getAttribute && e.target.getAttribute('href');
         this.setState({ menuOpen: false, showTop: (href && href.charAt(0) === '#') ? true : this.state.showTop });
